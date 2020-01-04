@@ -1,0 +1,7 @@
+* Hyperskip
+Hyperskip adds email-powered comments for Hugo.
+
+Insert comment section with
+#+BEGIN_SRC html
+{{ partial "hyperskip.html" . }}
+#+END_SRC

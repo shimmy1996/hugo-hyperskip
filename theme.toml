@@ -1,0 +1,12 @@
+name = "Hyperskip"
+license = "MIT"
+licenselink = "./LICENSE"
+description = ""
+homepage = ""
+tags = []
+features = []
+min_version = "0.41"
+
+[author]
+  name = "Shimmy Xu"
+  homepage = ""

@@ -1,0 +1,20 @@
+[hyperskip-header]
+other = "评论区"
+
+[hyperskip-name]
+other = "用户名："
+
+[hyperskip-name-default]
+other = "无名氏"
+
+[hyperskip-comment]
+other = "评论："
+
+[hyperskip-submit]
+other = "使用电子邮件提交"
+
+[hyperskip-reply]
+other = "回复"
+
+[hyperskip-requirement]
+other = "至少三个字符。"

@@ -1,0 +1,19 @@
+<form
+  action="mailto:{{ $.Site.Author.email }}?subject=RE:{{ $.Page.RelPermalink }}"
+  method="post"
+  enctype="text/plain"
+  name="comment_form">
+  <label for="name">{{ i18n "hyperskip-name" }}</label><br/>
+  <input type="text" id="name" name="name" maxlength="20"
+         placeholder="{{ i18n "hyperskip-name-default" }}"/>
+  <br/><br/>
+  <label for="comment">{{ i18n "hyperskip-comment" }}</label><br/>
+  <textarea id="comment"
+            name="comment"
+            rows="8"
+            minlength="3"
+            placeholder="{{ i18n "hyperskip-requirement"}}"
+            style="resize:vertical;min-height:3em;"></textarea>
+  <br/><br/>
+  <input type="submit" value="{{ i18n "hyperskip-submit"}}">
+</form>

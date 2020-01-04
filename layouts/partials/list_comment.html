@@ -1,0 +1,22 @@
+{{ with .Site.Data.comments.comments }}
+{{ range sort (where . "rel_permalink" $.Page.RelPermalink) "time" }}
+{{ $hash := (print .name .time) | md5 | last 7 }}
+<hr/>
+<div id="{{ $hash }}">
+  <b>{{ or .name (i18n "hyperskip-name-default") }}</b>&nbsp;
+  <a href="#{{ $hash }}">#{{ $hash }}</a>&nbsp;
+  <span style="float:right;">
+    {{- .time.Format "2006-01-02T15:04-07:00" -}}
+    &nbsp;&#91;&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
+      {{- i18n "hyperskip-reply" -}}
+    </a>&nbsp;&#93;
+  </span>
+  <div style="margin-top:1em;">{{ .content | htmlEscape | markdownify }}</div>
+</div>
+{{ end }}
+<script>
+  function reply(hash) {
+      document.forms.comment_form.comment.value += "[RE:#" + hash + "](#" + hash + ")\n";
+  }
+</script>
+{{ end }}

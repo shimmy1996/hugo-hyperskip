@@ -1,0 +1,20 @@
+[hyperskip-header]
+other = "Comments"
+
+[hyperskip-name]
+other = "Name: "
+
+[hyperskip-name-default]
+other = "Anonymous"
+
+[hyperskip-comment]
+other = "Comment: "
+
+[hyperskip-submit]
+other = "Email Comment"
+
+[hyperskip-reply]
+other = "Reply"
+
+[hyperskip-requirement]
+other = "At least 3 characters."
