@@ -5,7 +5,7 @@
 <hr/>
 <div id="{{ $hash }}">
   <b>{{ or .name (i18n "hyperskip-name-default") }}</b>&nbsp;
-  {{- if eq (.email_hash | last 10) ($.Site.Author.email | sha256 | last 10) -}}
+  {{- if (strings.HasSuffix ($.Site.Author.email | sha256) .email_hash) -}}
   ✦
   {{- else -}}
   <code>{{ .email_hash | last 10 }}</code>
