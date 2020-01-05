@@ -12,7 +12,7 @@
     </a>&nbsp;&#93;
   </span>
   <br/>
-  {{ $timestamp }}
+  <time datetime={{ $timestamp }}>{{ $timestamp }}</time>
   <div style="margin-top:1em;">{{ .content | htmlEscape | markdownify }}</div>
 </div>
 {{ end }}
