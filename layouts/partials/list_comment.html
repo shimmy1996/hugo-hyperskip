@@ -2,24 +2,27 @@
 {{ range sort (where . "uri" $.Page.RelPermalink) "time" }}
 {{ $timestamp := .time.Format "2006-01-02T15:04:05-07:00" }}
 {{ $hash := print .name $timestamp | md5 | last 7 }}
-<hr/>
-<div id="{{ $hash }}">
-  <b>{{ or .name (i18n "hyperskip-name-default") }}</b>&nbsp;
-  {{- if (strings.HasSuffix ($.Site.Author.email | sha256) .email_hash) -}}
-  ✦
-  {{- else -}}
-  <code>{{ .email_hash | last 10 }}</code>
-  {{- end -}}
-  &nbsp;
-  <span style="float:right;">
-    <a href="#{{ $hash }}">#{{ $hash }}</a>&nbsp;&#91;&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
-      {{- i18n "hyperskip-reply" -}}
-    </a>&nbsp;&#93;
-  </span>
-  <br/>
-  <time datetime={{ $timestamp }}>{{ $timestamp }}</time>
-  <div>{{ .content | htmlEscape | markdownify }}</div>
-</div>
+<article id="{{ $hash }}">
+  <header>
+    <h3>{{ or .name (i18n "hyperskip-name-default") }}&nbsp;
+      {{- if (strings.HasSuffix ($.Site.Author.email | sha256) .email_hash) -}}
+      ✦
+      {{- else -}}
+      <code>{{ .email_hash | last 4 }}</code>
+      {{- end -}}
+    </h3>
+    <nav>
+      <time datetime={{ $timestamp }}>
+        {{- .time.Format "2006-01-02" -}}
+      </time>&nbsp;|&nbsp;<a href="#{{ $hash }}">#
+        {{- $hash -}}
+      </a>&nbsp;|&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
+        {{- i18n "hyperskip-reply" -}}
+      </a>
+    </nav>
+  </header>
+  {{ .content | htmlEscape | markdownify }}
+</article>
 {{ end }}
 <script>
   function reply(hash) {
