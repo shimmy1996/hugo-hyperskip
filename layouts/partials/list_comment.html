@@ -5,7 +5,12 @@
 <hr/>
 <div id="{{ $hash }}">
   <b>{{ or .name (i18n "hyperskip-name-default") }}</b>&nbsp;
-  <code>{{ .email_hash | last 10 }}</code>&nbsp;
+  {{- if eq (.email_hash | last 10) ($.Site.Author.email | md5 | last 10) -}}
+  ✦
+  {{- else -}}
+  <code>{{- .email_hash | last 10 -}}</code>
+  {{- end -}}
+  &nbsp;
   <span style="float:right;">
     <a href="#{{ $hash }}">#{{ $hash }}</a>&nbsp;&#91;&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
       {{- i18n "hyperskip-reply" -}}
