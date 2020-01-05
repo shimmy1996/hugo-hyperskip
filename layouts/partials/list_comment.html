@@ -5,7 +5,7 @@
 <hr/>
 <div id="{{ $hash }}">
   <b>{{ or .name (i18n "hyperskip-name-default") }}</b>&nbsp;
-  <code>{{ .email_hash | last 10 -}}</code>&nbsp;
+  <code>{{ .email_hash | last 10 }}</code>&nbsp;
   <span style="float:right;">
     <a href="#{{ $hash }}">#{{ $hash }}</a>&nbsp;&#91;&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
       {{- i18n "hyperskip-reply" -}}
