@@ -1,7 +1,6 @@
 <form
   action="mailto:{{ $.Site.Author.email }}?subject=RE:{{ $.Page.RelPermalink }}"
   method="post"
-  enctype="text/plain"
   name="comment_form">
   <label for="name">{{ i18n "hyperskip-name" }}</label><br/>
   <input type="text" id="name" name="name" maxlength="20"
