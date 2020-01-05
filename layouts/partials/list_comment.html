@@ -5,13 +5,14 @@
 <hr/>
 <div id="{{ $hash }}">
   <b>{{ or .name (i18n "hyperskip-name-default") }}</b>&nbsp;
-  <a href="#{{ $hash }}">#{{ $hash }}</a>&nbsp;
+  <code>{{ .email_hash | last 10 -}}</code>&nbsp;
   <span style="float:right;">
-    {{- $timestamp -}}
-    &nbsp;&#91;&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
+    <a href="#{{ $hash }}">#{{ $hash }}</a>&nbsp;&#91;&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
       {{- i18n "hyperskip-reply" -}}
     </a>&nbsp;&#93;
   </span>
+  <br/>
+  {{ $timestamp }}
   <div style="margin-top:1em;">{{ .content | htmlEscape | markdownify }}</div>
 </div>
 {{ end }}
