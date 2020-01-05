@@ -1,7 +1,30 @@
 * Hyperskip
 Hyperskip adds email-powered comments for Hugo.
 
+** Usage
 Insert comment section with
 #+BEGIN_SRC html
 {{ partial "hyperskip.html" . }}
 #+END_SRC
+
+The theme expects to find =/data/comments.toml= in the blog directory with the following format:
+#+BEGIN_SRC toml
+  [[comments]]
+  name="Anonymous"
+  email_hash="1234abcd8d"
+  time=2020-01-01T01:01:01+00:00
+  uri="/my-first-post/"
+  content="""
+  Hello!
+  """
+  [[comments]]
+  name="Ken"
+  email_hash="abcd1234h8"
+  time=2020-01-01T01:03:01+00:00
+  uri="/my-first-post/"
+  content="""
+  Thanks!
+  """
+#+END_SRC
+
+By default, form data is sent using URL encoding in body of the email. An easy way to convert it back is to use =urllib.parse.unquote= in Python.
