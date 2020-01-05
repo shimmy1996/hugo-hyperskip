@@ -1,5 +1,5 @@
 {{ with .Site.Data.comments.comments }}
-{{ range sort (where . "rel_permalink" $.Page.RelPermalink) "time" }}
+{{ range sort (where . "uri" $.Page.RelPermalink) "time" }}
 {{ $hash := (print .name .time) | md5 | last 7 }}
 <hr/>
 <div id="{{ $hash }}">
