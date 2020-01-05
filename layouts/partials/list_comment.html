@@ -1,12 +1,13 @@
 {{ with .Site.Data.comments.comments }}
 {{ range sort (where . "uri" $.Page.RelPermalink) "time" }}
-{{ $hash := (print .name .time) | md5 | last 7 }}
+{{ $timestamp := .time.Format "2006-01-02T15:04:05-07:00" }}
+{{ $hash := print .name $timestamp | md5 | last 7 }}
 <hr/>
 <div id="{{ $hash }}">
   <b>{{ or .name (i18n "hyperskip-name-default") }}</b>&nbsp;
   <a href="#{{ $hash }}">#{{ $hash }}</a>&nbsp;
   <span style="float:right;">
-    {{- .time.Format "2006-01-02T15:04-07:00" -}}
+    {{- $timestamp -}}
     &nbsp;&#91;&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
       {{- i18n "hyperskip-reply" -}}
     </a>&nbsp;&#93;
