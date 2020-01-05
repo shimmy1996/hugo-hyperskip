@@ -27,4 +27,12 @@ The theme expects to find =/data/comments.toml= in the blog directory with the f
   """
 #+END_SRC
 
+For the email form to work properly, please specify in blog's =config.toml= author's email, which will be used for submission and matching blog author's comments. You can specify author information like so:
+#+BEGIN_SRC toml
+  [author]
+  email = "author@example.com"
+#+END_SRC
+
+The last 10 characters of =email_hash= will be displayed on the page for anyone aside from the blog author (SHA256 is used to match author email to given email hash). It is preferable to also only store the last 10 or fewer characters of email hash in the =comments.toml= file. This is used as an alternative to services like Gravatar or Libravatar for identification purposes, which would have required storing the entire hash value.
+
 By default, form data is sent using URL encoding in body of the email. An easy way to convert it back is to use =urllib.parse.unquote= in Python.
