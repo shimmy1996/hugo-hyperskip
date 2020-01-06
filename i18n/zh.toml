@@ -17,4 +17,4 @@ other = "使用电子邮件提交"
 other = "回复"
 
 [hyperskip-requirement]
-other = "至少三个字符。"
+other = "至少三个字符。支持 Markdown 语法。"

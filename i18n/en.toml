@@ -17,4 +17,4 @@ other = "Email Comment"
 other = "Reply"
 
 [hyperskip-requirement]
-other = "At least 3 characters."
+other = "At least 3 characters. Markdown is supported."
