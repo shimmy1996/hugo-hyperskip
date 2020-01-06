@@ -12,9 +12,8 @@
       {{- end -}}
     </h3>
     <nav>
-      <time datetime={{ $timestamp }}>
-        {{- .time.Format "2006-01-02" -}}
-      </time>&nbsp;|&nbsp;<a href="#{{ $hash }}">#
+      {{- .time.Format "2006-01-02" -}}
+      &nbsp;|&nbsp;<a href="#{{ $hash }}">#
         {{- $hash -}}
       </a>&nbsp;|&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
         {{- i18n "hyperskip-reply" -}}
