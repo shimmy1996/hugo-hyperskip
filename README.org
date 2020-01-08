@@ -1,10 +1,15 @@
 * Hyperskip
-Hyperskip adds email-powered comments for Hugo.
+Hyperskip adds email-powered static comments for Hugo.
 
 ** Usage
 Insert comment section with
 #+BEGIN_SRC html
 {{ partial "hyperskip.html" . }}
+#+END_SRC
+
+For best compatibility with web feeds like RSS or ATOM, use the following =<nav>=-less version to avoid use of =onlick= and anchors
+#+BEGIN_SRC html
+{{ partial "hyperskip_feed.html" . }}
 #+END_SRC
 
 The theme expects to find =/data/comments.toml= in the blog directory with the following format:
