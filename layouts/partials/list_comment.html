@@ -12,7 +12,7 @@
       {{- if (strings.HasSuffix ($.Site.Author.email | sha256) .email_hash) -}}
       ✦
       {{- else -}}
-      <code>{{ .email_hash | last 4 }}</code>
+      &nbsp;<code>{{ .email_hash | last 4 }}</code>
       {{- end -}}
     </h3>
     {{ if not ($.Scratch.Get "is_feed") }}
