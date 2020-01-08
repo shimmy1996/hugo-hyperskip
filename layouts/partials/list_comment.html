@@ -1,5 +1,9 @@
+{{ $comments := "" }}
 {{ with .Site.Data.comments.comments }}
-{{ range sort (where . "uri" $.Page.RelPermalink) "time" }}
+{{ $comments = sort (where . "uri" $.Page.RelPermalink) "time" }}
+{{ end }}
+{{ with $comments }}
+{{ range . }}
 {{ $timestamp := .time.Format "2006-01-02T15:04:05-07:00" }}
 {{ $hash := print .name $timestamp | md5 | last 7 }}
 <article id="{{ $hash }}">
@@ -28,4 +32,6 @@
       document.forms.comment_form.comment.value += "[>>" + hash + "](#" + hash + ")\n";
   }
 </script>
+{{ else }}
+<p>{{ i18n "hyperskip-placeholder" }}</p>
 {{ end }}

@@ -18,3 +18,6 @@ other = "Reply"
 
 [hyperskip-requirement]
 other = "At least 3 characters. Markdown is supported."
+
+[hyperskip-placeholder]
+other = "No comments yet."
