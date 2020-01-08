@@ -15,14 +15,14 @@
       &nbsp;<code>{{ .email_hash | last 4 }}</code>
       {{- end -}}
     </h3>
-    {{ if not ($.Scratch.Get "is_feed") }}
-    <nav>
+    <nav><p>
       {{- .time.Format "2006-01-02" -}}
+      {{ if not ($.Scratch.Get "is_feed") }}
       &nbsp;|&nbsp;<a href="#{{ $hash }}">#
         {{- $hash -}}
       </a>&nbsp;|&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
         {{- i18n "hyperskip-reply" -}}
-      </a>
+      </a></p>
     </nav>
     {{ end }}
   </header>
