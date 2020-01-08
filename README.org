@@ -7,7 +7,7 @@ Insert comment section with
 {{ partial "hyperskip.html" . }}
 #+END_SRC
 
-For best compatibility with web feeds like RSS or ATOM, use the following =<nav>=-less version to avoid use of =onlick= and anchors
+For best compatibility with web feeds like RSS or ATOM, use the following to avoid including =<script>= and =<form>=
 #+BEGIN_SRC html
 {{ partial "hyperskip_feed.html" . }}
 #+END_SRC
