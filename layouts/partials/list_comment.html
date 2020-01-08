@@ -1,5 +1,5 @@
 {{ $comments := "" }}
-{{ with .Site.Data.comments.comments }}
+{{ with $.Site.Data.comments.comments }}
 {{ $comments = sort (where . "uri" $.Page.RelPermalink) "time" }}
 {{ end }}
 {{ with $comments }}
@@ -15,6 +15,7 @@
       <code>{{ .email_hash | last 4 }}</code>
       {{- end -}}
     </h3>
+    {{ if not ($.Scratch.Get "is_feed") }}
     <nav>
       {{- .time.Format "2006-01-02" -}}
       &nbsp;|&nbsp;<a href="#{{ $hash }}">#
@@ -23,15 +24,11 @@
         {{- i18n "hyperskip-reply" -}}
       </a>
     </nav>
+    {{ end }}
   </header>
   {{ .content | htmlEscape | markdownify }}
 </article>
 {{ end }}
-<script>
-  function reply(hash) {
-      document.forms.comment_form.comment.value += "[>>" + hash + "](#" + hash + ")\n";
-  }
-</script>
 {{ else }}
 <p>{{ i18n "hyperskip-placeholder" }}</p>
 {{ end }}

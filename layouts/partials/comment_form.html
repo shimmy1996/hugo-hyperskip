@@ -13,3 +13,8 @@
             placeholder="{{ i18n "hyperskip-requirement"}}"></textarea><br/>
   <input type="submit" value="{{ i18n "hyperskip-submit"}}">
 </form>
+<script>
+  function reply(hash) {
+      document.forms.comment_form.comment.value += "[>>" + hash + "](#" + hash + ")\n";
+  }
+</script>
