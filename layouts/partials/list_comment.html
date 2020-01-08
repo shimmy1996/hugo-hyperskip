@@ -8,7 +8,7 @@
 {{ $hash := print .name $timestamp | md5 | last 7 }}
 <article id="{{ $hash }}">
   <header>
-    <h3>{{ or .name (i18n "hyperskip-name-default") }}&nbsp;
+    <h3>{{ or .name (i18n "hyperskip-name-default") }}
       {{- if (strings.HasSuffix ($.Site.Author.email | sha256) .email_hash) -}}
       ✦
       {{- else -}}
