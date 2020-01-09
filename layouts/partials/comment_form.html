@@ -1,4 +1,4 @@
-<form action="mailto:{{ $.Site.Author.email }}?subject=RE:{{ $.Page.RelPermalink }}"
+<form action="mailto:{{ $.Site.Author.email | replaceRE "@" "%40" }}?subject=RE:{{ $.Page.RelPermalink }}"
       method="post"
       name="comment_form">
   <p><label for="name">{{ i18n "hyperskip-name" }}</label><br/>
