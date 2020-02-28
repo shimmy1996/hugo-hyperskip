@@ -25,7 +25,9 @@
         {{- end -}}
     </p></nav>
   </header>
-  {{ .content | htmlEscape | markdownify }}
+  {{- with (.content | htmlEscape | markdownify) }}
+  {{ if not ( findRE "<[h|p][^>]*>" . ) }}<p>{{ . }}</p>{{ else }}{{ . }}{{ end }}
+  {{ end -}}
 </article>
 {{ end }}
 {{ else }}
