@@ -8,22 +8,17 @@
 {{ $hash := print .name $timestamp | md5 | last 7 }}
 <article id="{{ $hash }}">
   <header>
-    <h3>{{ or .name (i18n "hyperskip-name-default") }}
-      {{- if (strings.HasSuffix ($.Site.Author.email | sha256) .email_hash) -}}
-      ✦
-      {{- else -}}
-      &nbsp;<code>{{ .email_hash | last 4 }}</code>
-      {{- end -}}
-    </h3>
-    <nav><p>
-        {{- .time.Format "2006-01-02" -}}
-        &nbsp;|&nbsp;<a href="#{{ $hash }}">#{{ $hash }}</a>
-        {{- if not ($.Scratch.Get "is_feed") -}}
-        &nbsp;|&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
-          {{- i18n "hyperskip-reply" -}}
-        </a>
-        {{- end -}}
-    </p></nav>
+    <b>{{- or .name (i18n "hyperskip-name-default") }}</b>&nbsp;
+    {{- if (strings.HasSuffix ($.Site.Author.email | sha256) .email_hash) -}}
+    ✦{{ else }}<code>{{ .email_hash | last 4 }}</code>
+    {{- end -}}
+    <br/>{{ .time.Format "2006-01-02" -}}
+    &nbsp;|&nbsp;<a href="#{{ $hash }}">#{{ $hash }}</a>
+    {{- if not ($.Scratch.Get "is_feed") -}}
+    &nbsp;|&nbsp;<a href="#comment" onclick="reply({{ $hash }})">
+      {{- i18n "hyperskip-reply" -}}
+    </a>
+    {{- end -}}
   </header>
   {{- with (.content | htmlEscape | markdownify) }}
   {{ if not ( findRE "<[h|p][^>]*>" . ) }}<p>{{ . }}</p>{{ else }}{{ . }}{{ end }}
