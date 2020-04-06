@@ -20,7 +20,7 @@
     </a>
     {{- end -}}
   </header>
-  {{- with (.content | htmlEscape | markdownify) }}
+  {{- with (.content | markdownify ) }}
   {{ if not ( findRE "<[h|p][^>]*>" . ) }}<p>{{ . }}</p>{{ else }}{{ . }}{{ end }}
   {{ end -}}
 </article>
