@@ -2,18 +2,29 @@
 Hyperskip adds email-powered static comments for Hugo.
 
 ** Usage
-Insert comment section with
-#+BEGIN_SRC html
-{{ partial "hyperskip.html" . }}
+Clone this repository to your themes folder (typically =themes= from Hugo root),
+and add Hyperskip to the list of themes (yes, you can use a list of theme names)
+in Hugo configuration. Here's an example when using TOML format config
+(=config.toml=):
+#+BEGIN_SRC toml
+theme = ["hugo-djem-so", "hugo-hyperskip"]
 #+END_SRC
+
+In template files, insert comment section with
+#+BEGIN_SRC html
+  {{ partial "hyperskip.html" . }}
+#+END_SRC
+This would insert both a =mailto= form for comment submissions, and the list of
+comments.
 
 For best compatibility with web feeds like RSS or ATOM, use the following to
-avoid including =<script>= and =<form>=
+avoid including =<script>= and =<form>= when inserting comments to web feed
+templates
 #+BEGIN_SRC html
-{{ partial "hyperskip_feed.html" . }}
+  {{ partial "hyperskip_feed.html" . }}
 #+END_SRC
 
-The theme expects to find =/data/comments.toml= in the blog directory with the
+The theme expects to find =data/comments.toml= in Hugo directory with the
 following format:
 #+BEGIN_SRC toml
   [[comments]]
@@ -34,9 +45,16 @@ following format:
   """
 #+END_SRC
 
-For the email form to work properly, please specify in blog's =config.toml=
+Due to the linear nature of the way comments are stored, replies are handled by
+including an anchor link (or multiple ones) to the comment(s) being replied
+to. The structure of comments is thus an directed acyclic graph, instead of a
+tree. Anchor links are generated from MD5 hash of author name and timestamp,
+both of which are already public information.
+
+For the =mailto= form to work properly, please specify in Hugo configuration
 author's email, which will be used for submission and matching blog author's
-comments. You can specify author information like so:
+comments. For example, when using TOML format config (=config.toml=), you can
+specify author information like so:
 #+BEGIN_SRC toml
   [author]
   email = "author@example.com"
