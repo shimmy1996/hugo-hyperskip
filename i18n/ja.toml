@@ -1,0 +1,23 @@
+[hyperskip-header]
+other = "コメント"
+
+[hyperskip-name]
+other = "名前："
+
+[hyperskip-name-default]
+other = "名無し"
+
+[hyperskip-comment]
+other = "コメント内容："
+
+[hyperskip-submit]
+other = "メールで投稿"
+
+[hyperskip-reply]
+other = "返信"
+
+[hyperskip-requirement]
+other = "3文字以上。Markdownサポートがあります。"
+
+[hyperskip-placeholder]
+other = "まだコメントはありません。"
