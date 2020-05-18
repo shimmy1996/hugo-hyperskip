@@ -21,3 +21,9 @@ other = "3文字以上。Markdownサポートがあります。"
 
 [hyperskip-placeholder]
 other = "まだコメントはありません。"
+
+[hyperskip-webmention]
+other = "または、自分のサイトで[レスポンス](https://indieweb.org/responses)して、URLを知らせてください："
+
+[hyperskip-webmention-submit]
+other = "ウェブメンションで投稿"

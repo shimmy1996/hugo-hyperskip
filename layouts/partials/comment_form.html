@@ -13,6 +13,15 @@
               placeholder="{{ i18n "hyperskip-requirement"}}"></textarea></p>
   <p><input type="submit" value="{{ i18n "hyperskip-submit"}}"></p>
 </form>
+{{ with $.Site.Params.webmentionEndpoint }}
+<form action="{{ . }}"
+      method="post" target="_blank">
+  <p><label for="link">{{ i18n "hyperskip-webmention" | markdownify }}</label><br/>
+    <input type="url" id="link" name="source" placeholder="https://foo.bar/baz"/></p>
+  <input type="hidden" name="target" value="{{ $.Page.Permalink }}">
+  <p><input type="submit" value="{{ i18n "hyperskip-webmention-submit" }}"/></p>
+</form>
+{{ end }}
 <script>
   function reply(hash, name) {
       document.forms.comment_form.comment.value += "[Re: " + name + "](#" + hash + ")\n";

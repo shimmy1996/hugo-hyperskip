@@ -2,6 +2,7 @@
 Hyperskip adds email-powered static comments for Hugo.
 
 ** Usage
+*** Installation
 Clone this repository to your themes folder (typically =themes= from Hugo root),
 and add Hyperskip to the list of themes (yes, you can use a list of theme names)
 in Hugo configuration. Here's an example when using TOML format config
@@ -24,6 +25,7 @@ templates
   {{ partial "hyperskip_feed.html" . }}
 #+END_SRC
 
+*** Comment Format
 The theme expects to find =data/comments.toml= in Hugo directory with the
 following format:
 #+BEGIN_SRC toml
@@ -69,3 +71,11 @@ storing the entire hash value, an inherent security risk.
 
 By default, form data is sent using URL encoding in body of the email. An easy
 way to convert it back is to use =urllib.parse.unquote= in Python.
+
+*** Webmention
+Hyperskip also includes a form for submitting Webmentions. To enable it, specify
+Webmention endpoint in your site's =config.toml= (or equivalent) like so:
+#+BEGIN_SRC toml
+  [params]
+  webmentionEndpoint = "https://your-webmention-endpoint/"
+#+END_SRC

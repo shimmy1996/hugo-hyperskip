@@ -21,3 +21,9 @@ other = "至少三个字符。支持 Markdown 语法。"
 
 [hyperskip-placeholder]
 other = "暂时没有评论。"
+
+[hyperskip-webmention]
+other = "或者在您自己的网站上[回应](https://indieweb.org/responses)，并把网址告诉我吧："
+
+[hyperskip-webmention-submit]
+other = "发送Webmention"
