@@ -6,16 +6,17 @@
 {{ range . }}
 {{ $timestamp := .time.Format "2006-01-02T15:04:05-07:00" }}
 {{ $hash := print .name $timestamp | md5 | last 7 }}
+{{ $name := or .name (i18n "hyperskip-name-default") }}
 <article id="{{ $hash }}">
   <header>
-    <a href="#{{ $hash }}">{{ $timestamp }}</a>&nbsp;|&nbsp;#{{ $hash }}
-    {{ if not ($.Scratch.Get "is_feed") }}
-    <span style="float:right">
-      <a href="#comment" onclick="reply({{ $hash }})">{{- i18n "hyperskip-reply" -}}</a>
-    </span>
+    <a href="#{{ $hash }}">{{ $timestamp }}</a>
+    {{- if not ($.Scratch.Get "is_feed") -}}
+    &nbsp;|&nbsp;<a href="#comment" onclick="reply({{ $hash }},{{ $name }})">
+      {{- i18n "hyperskip-reply" -}}
+    </a>
     {{ end }}
     <br/>
-    <b>{{- or .name (i18n "hyperskip-name-default") }}</b>&nbsp;
+    <b>{{ $name }}</b>&nbsp;
     {{- if (strings.HasSuffix ($.Site.Author.email | sha256) .email_hash) -}}
     ✦{{ else }}<code>{{ .email_hash | last 4 }}</code>
     {{- end -}}

@@ -14,7 +14,7 @@
   <p><input type="submit" value="{{ i18n "hyperskip-submit"}}"></p>
 </form>
 <script>
-  function reply(hash) {
-      document.forms.comment_form.comment.value += "[>>" + hash + "](#" + hash + ")\n";
+  function reply(hash, name) {
+      document.forms.comment_form.comment.value += "[Re: " + name + "](#" + hash + ")\n";
   }
 </script>
