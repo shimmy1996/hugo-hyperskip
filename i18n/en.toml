@@ -23,7 +23,7 @@ other = "At least 3 characters. Markdown is supported."
 other = "No comments yet."
 
 [hyperskip-webmention]
-other = "Alternatively, [respond](https://indieweb.org/responses) on your own site and let me know the URL:"
+other = "Alternatively, [respond](https://indieweb.org/reply#How_To) on your own site and let me know the URL:"
 
 [hyperskip-webmention-submit]
 other = "Send Webmention"
